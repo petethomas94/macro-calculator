@@ -1,0 +1,54 @@
+.protein-slider .rangeslider__fill{
+    background-color: #EC4D2A;
+}
+
+.protein-slider .rangeslider__handle{
+    background: #A23720
+}
+
+.protein-slider .rangeslider{
+    margin: 0px 45px 0px 0px;
+}
+
+.carb-slider .rangeslider__fill{
+    background-color: #366AF9;
+}
+
+.carb-slider .rangeslider__handle{
+    background: #2043A2
+}
+
+.fat-slider .rangeslider__fill{
+    background-color: #F9E436;
+}
+
+.fat-slider .rangeslider__handle{
+    background: #BBAB23
+}
+
+.rangeslider{
+    width: 70px;
+    height: 500px;
+    box-shadow: none;
+    -webkit-box-shadow:none;
+    margin: 0px 45px 0px 45px;
+}
+
+.rangeslider-vertical{
+    max-width: 100px;
+}
+
+.rangeslider-vertical .rangeslider__handle{
+    left:0px;
+    width:70px;
+}
+
+.rangeslider .rangeslider__handle{
+    outline: none;
+    border: none;
+    height: 40px
+} 
+
+.rangeslider .rangeslider__labels{
+    left: 90px;
+}
