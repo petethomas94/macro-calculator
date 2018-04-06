@@ -27,27 +27,72 @@ class MacroCalculator extends Component {
     }
   
     updateProteinConsumption = (value) => {
+        let difference = value - this.state.proteinPercentage; 
         let proteinConsumption = (this.state.dailyCalorieConsumption/100) * value;
+        
+        let fatP = this.state.fatPercentage - (difference/2);
+        let carbP = this.state.carbsPercentage - (difference/2);
+        
+        if(fatP <= 0){
+            carbP -= (difference / 2);
+        }
+
+        if(carbP <= 0){
+            fatP -= (difference / 2);
+        }
+
         this.setState({
             proteinPercentage: value,
-            proteinConsumption: proteinConsumption
-        })
+            proteinConsumption: proteinConsumption,
+            fatPercentage: fatP >= 0 ? fatP : this.state.fatPercentage,
+            carbsPercentage: carbP >= 0 ? carbP : this.state.carbsPercentage
+        });
     }
   
     updateCarbConsumption = (value) => {
+        let difference = value - this.state.carbsPercentage;         
         let carbConsumption = (this.state.dailyCalorieConsumption/100) * value;        
+        
+        let fatP = this.state.fatPercentage - (difference/2);
+        let proteinP = this.state.proteinPercentage - (difference/2);
+        
+        if(fatP <= 0){
+            proteinP -= (difference / 2);
+        }
+
+        if(proteinP <= 0){
+            fatP -= (difference / 2);
+        }
+
         this.setState({
             carbsPercentage: value,
-            carbConsumption: carbConsumption
-        })
+            carbConsumption: carbConsumption,
+            proteinPercentage: proteinP >= 0 ? proteinP : this.state.proteinPercentage,
+            fatPercentage: fatP >= 0 ? fatP : this.state.fatPercentage,
+        });
     }
   
     updateFatConsumption = (value) => {
-        let fatConsumption = (this.state.dailyCalorieConsumption/100) * value;
+        let difference = value - this.state.fatPercentage;         
+        let fatConsumption = (this.state.dailyCalorieConsumption/100) * value;       
+
+        let carbP = this.state.carbsPercentage - (difference/2);
+        let proteinP = this.state.proteinPercentage - (difference/2);
+        
+        if(carbP <= 0){
+            proteinP -= (difference / 2);
+        }
+
+        if(proteinP <= 0){
+            carbP -= (difference / 2);
+        }
+        
         this.setState({
             fatPercentage: value,
-            fatConsumption: fatConsumption
-        })
+            fatConsumption: fatConsumption,
+            proteinPercentage: proteinP >= 0 ? proteinP : this.state.proteinPercentage,
+            carbsPercentage: carbP >= 0 ? carbP : this.state.carbsPercentage,
+        });
     }
   
     render(){
